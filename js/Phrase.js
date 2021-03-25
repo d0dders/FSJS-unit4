@@ -9,13 +9,13 @@ class Phrase {
 
     addPhraseToDisplay() {
         const phraseList = document.querySelector('#phrase>ul');
-        for (let i = 0; i < this.phrase.length; i++){
-            if (this.phrase[i] === ' ') {
+        [...this.phrase].forEach(letter => {
+            if (letter === ' ') {
                 phraseList.insertAdjacentHTML("beforeend", `<li class="space"> </li>`);
             } else {
-                phraseList.insertAdjacentHTML("beforeend", `<li class="hide letter ${this.phrase[i]}">${this.phrase[i]}</li>`);
+                phraseList.insertAdjacentHTML("beforeend", `<li class="hide letter ${letter}">${letter}</li>`);
             }
-        }
+        });
     }
 
     checkLetter(letter) {
