@@ -26,20 +26,32 @@ class Game {
     }
 
 
+    /**
+     * 
+     * @param {HTMLElement} letterButton 
+     */
     handleInteraction(letterButton) {
         letterButton.disabled = true;
         const letter = letterButton.innerText;
         if (!this.activePhrase.phrase.includes(letter)) {
-            console.log(`${letter}: is NOT in the phrase`)
-            // add wrong to css and removelife()
+            letterButton.classList.add('wrong');
+            this.removeLife();
         } else  {
-            console.log(`${letter}: is in the phrase`)
-            // add wrong to css and removelife()
-        //letter in phrase
-            //add chosen to css
-            //showMatchedletter
-            //checkWin
+            letterButton.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(letter);
+            //checkWin()
                 //gameover WIN
+        }
+    }
+
+
+    removeLife() {
+        const lives = document.querySelectorAll('.tries>img');
+        lives[this.missed].setAttribute('src', 'images/lostHeart.png');
+        this.missed++;
+        if (this.missed === 5) {
+            console.log('GAME OVER');
+            //gameOver()
         }
     }
 }
