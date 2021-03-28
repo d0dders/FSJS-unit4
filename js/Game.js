@@ -14,19 +14,32 @@ class Game {
 
 
     startGame() {
-        /* startGame(): hides the start screen overlay, calls the getRandomPhrase() method, 
-        and sets the activePhrase property with the chosen phrase. It also adds that phrase to the board by calling 
-        the addPhraseToDisplay() method on the active Phrase object. */
-
         const overlay = document.getElementById('overlay');
         overlay.style.display = 'none';
         this.activePhrase = new Phrase(this.getRandomPhrase());
         this.activePhrase.addPhraseToDisplay();
-        
     }
 
 
     getRandomPhrase() {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
+    }
+
+
+    handleInteraction(letterButton) {
+        letterButton.disabled = true;
+        const letter = letterButton.innerText;
+        if (!this.activePhrase.phrase.includes(letter)) {
+            console.log(`${letter}: is NOT in the phrase`)
+            // add wrong to css and removelife()
+        } else  {
+            console.log(`${letter}: is in the phrase`)
+            // add wrong to css and removelife()
+        //letter in phrase
+            //add chosen to css
+            //showMatchedletter
+            //checkWin
+                //gameover WIN
+        }
     }
 }
