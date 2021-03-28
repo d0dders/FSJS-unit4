@@ -21,4 +21,15 @@ class Phrase {
     checkLetter(letter) {
          return this.phrase.includes(letter);
     }
+
+    showMatchedLetter(chosenLetter) {
+        const phraseLetters = document.querySelectorAll('#phrase>ul>li');
+        phraseLetters.forEach(letterLi => {
+            console.log(letterLi);
+            if (letterLi.classList.contains(chosenLetter)) {
+                letterLi.classList.remove('hide');
+                letterLi.classList.add('show');
+            }
+        });
+    }
 }
