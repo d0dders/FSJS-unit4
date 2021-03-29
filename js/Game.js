@@ -49,6 +49,7 @@ class Game {
 
 
     removeLife() {
+        // TODO: prevent below from running if game already over. 
         lives[this.missed].setAttribute('src', 'images/lostHeart.png');
         this.missed++;
         if (this.missed === 5) {
