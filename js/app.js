@@ -22,7 +22,7 @@ keyboard.addEventListener('click', (e) => {
 document.addEventListener('keyup', (e) => {
     if (/^[a-zA-Z]$/.test(e.key)) {
         keys.forEach(key => {
-            if(key.textContent === e.key) {
+            if(key.textContent === e.key && game.isGameActive === true) {
                 game.handleInteraction(key);
             }
         });

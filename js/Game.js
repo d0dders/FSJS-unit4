@@ -13,6 +13,7 @@ class Game {
             'All the worlds a stage'
         ]
         this.activePhrase = null;
+        this.isGameActive = false;
     }
 
 
@@ -20,6 +21,7 @@ class Game {
         overlay.style.display = 'none';
         this.activePhrase = new Phrase(this.getRandomPhrase());
         this.activePhrase.addPhraseToDisplay();
+        this.isGameActive = true;
     }
 
 
@@ -33,16 +35,18 @@ class Game {
      * @param {HTMLElement} letterButton 
      */
     handleInteraction(letterButton) {
-        letterButton.disabled = true;
-        const letter = letterButton.innerText;
-        if (!this.activePhrase.phrase.includes(letter)) {
-            letterButton.classList.add('wrong');
-            this.removeLife();
-        } else  {
-            letterButton.classList.add('chosen');
-            this.activePhrase.showMatchedLetter(letter);
-            if (this.checkForWin()){
-                this.gameOver(true);
+        if (letterButton.disabled !== true) {
+            letterButton.disabled = true;
+            const letter = letterButton.innerText;
+            if (!this.activePhrase.phrase.includes(letter)) {
+                letterButton.classList.add('wrong');
+                this.removeLife();
+            } else  {
+                letterButton.classList.add('chosen');
+                this.activePhrase.showMatchedLetter(letter);
+                if (this.checkForWin()){
+                    this.gameOver(true);
+                }
             }
         }
     }
@@ -77,6 +81,7 @@ class Game {
         }
         overlay.style.display = 'flex';
         this.reset();
+        this.isGameActive = false;
     }
 
 
