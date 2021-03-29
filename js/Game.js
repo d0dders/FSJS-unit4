@@ -4,21 +4,22 @@
 
 const overlay = document.getElementById('overlay');
 const lives = document.querySelectorAll('.tries>img');
+const phraseList = [
+    "Array Iteration Methods",
+    "DOM Traversal",
+    "Arrow Functions",
+    "Callback Functions",
+    "Object Oriented Programming",
+    "Web Content Accessibility Guidelines",
+    "document object model",
+    "Regular Expression",
+    "Keep It Simple Stupid"
+]
 
 class Game {
     constructor() {
         this.missed = 0;
-        this.phrases = [
-            "Array Iteration Methods",
-            "DOM Traversal",
-            "Arrow Functions",
-            "Callback Functions",
-            "Object Oriented Programming",
-            "Web Content Accessibility Guidelines",
-            "document object model",
-            "Regular Expression",
-            "Keep It Simple Stupid"
-        ]
+        this.phrases = phraseList.map(phrase => new Phrase(phrase));
         this.activePhrase = null;
         this.isGameActive = false;
     }
@@ -26,7 +27,7 @@ class Game {
 
     startGame() {
         overlay.style.display = 'none';
-        this.activePhrase = new Phrase(this.getRandomPhrase());
+        this.activePhrase = this.getRandomPhrase();
         this.activePhrase.addPhraseToDisplay();
         this.isGameActive = true;
     }
