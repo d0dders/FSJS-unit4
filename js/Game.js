@@ -9,8 +9,15 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            'A rose by any other name would smell a sweet',
-            'All the worlds a stage'
+            "Array Iteration Methods",
+            "DOM Traversal",
+            "Arrow Functions",
+            "Callback Functions",
+            "Object Oriented Programming",
+            "Web Content Accessibility Guidelines",
+            "document object model",
+            "Regular Expression",
+            "Keep It Simple Stupid"
         ]
         this.activePhrase = null;
         this.isGameActive = false;
@@ -53,11 +60,9 @@ class Game {
 
 
     removeLife() {
-        // TODO: prevent below from running if game already over. 
         lives[this.missed].setAttribute('src', 'images/lostHeart.png');
         this.missed++;
         if (this.missed === 5) {
-            console.log('GAME OVER');
             this.gameOver(false);
         }
     }

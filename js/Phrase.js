@@ -12,6 +12,9 @@ class Phrase {
         [...this.phrase].forEach(letter => {
             if (letter === ' ') {
                 phraseList.insertAdjacentHTML("beforeend", `<li class="space"> </li>`);
+            } else if (/[^a-zA-Z]/.test(letter)) {
+                //Just incase we encounter something not a-z
+                phraseList.insertAdjacentHTML("beforeend", `<li class="show letter ${letter}">${letter}</li>`);
             } else {
                 phraseList.insertAdjacentHTML("beforeend", `<li class="hide letter ${letter}">${letter}</li>`);
             }
