@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-image: url("../images/code-tile.png");
 }
 
 li, ol, ul {
@@ -86,7 +87,7 @@ button {
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #fff;
 }
 
 
