@@ -39,8 +39,11 @@ class Game {
         } else  {
             letterButton.classList.add('chosen');
             this.activePhrase.showMatchedLetter(letter);
-            //checkWin()
+            if (this.checkForWin()){
+                console.log('YOU WON');
                 //gameover WIN
+
+            }
         }
     }
 
@@ -53,5 +56,12 @@ class Game {
             console.log('GAME OVER');
             //gameOver()
         }
+    }
+
+
+    checkForWin() {
+        const letters = [...document.querySelectorAll('.letter')];
+        console.log(letters);
+        return letters.every(letter => letter.classList.contains('show'));
     }
 }
