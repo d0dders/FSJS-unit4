@@ -79,8 +79,10 @@ class Game {
         overlay.classList.remove('start');
         if (gameWon){
             gameOverText.innerText = 'Congratulations! You won!';
+            overlay.classList.remove('lose');
             overlay.classList.add('win');
         } else {
+            overlay.classList.remove('win');
             overlay.classList.add('lose');
             gameOverText.innerText = 'Bummer! Try again!';
         }
