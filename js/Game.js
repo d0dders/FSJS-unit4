@@ -16,6 +16,7 @@ const phraseList = [
     "Keep It Simple Stupid"
 ]
 
+
 class Game {
     constructor() {
         this.missed = 0;
@@ -25,6 +26,9 @@ class Game {
     }
 
 
+    /**
+     * Show the game board and a new phrase to guess
+     */
     startGame() {
         overlay.style.display = 'none';
         this.activePhrase = this.getRandomPhrase();
@@ -33,14 +37,18 @@ class Game {
     }
 
 
+    /**
+     * Selects a random phrase
+     * @returns {Phrase}
+     */
     getRandomPhrase() {
         return this.phrases[Math.floor(Math.random() * this.phrases.length)];
     }
 
 
     /**
-     * 
-     * @param {HTMLElement} letterButton 
+     * Handles the players guesses
+     * @param {HTMLElement} letterButton - The key button the player selected
      */
     handleInteraction(letterButton) {
         if (letterButton.disabled !== true) {
@@ -60,6 +68,9 @@ class Game {
     }
 
 
+    /**
+     * Updates lives left for incorrect guesses
+     */
     removeLife() {
         lives[this.missed].setAttribute('src', 'images/lostHeart.png');
         this.missed++;
@@ -69,12 +80,20 @@ class Game {
     }
 
 
+    /**
+     * Checks if all letters ahve been guessed
+     * @returns {boolean}
+     */
     checkForWin() {
         const letters = [...document.querySelectorAll('.letter')];
         return letters.every(letter => letter.classList.contains('show'));
     }
 
 
+    /**
+     * Handles ending the game, presenting final screen
+     * @param {boolean} gameWon - Boolean representing whther the game was won 
+     */
     gameOver(gameWon) {
         const gameOverText = document.getElementById('game-over-message');
         overlay.classList.remove('start');
@@ -93,6 +112,9 @@ class Game {
     }
 
 
+    /**
+     * Resets the game board ready for a new game to be created
+     */
     reset() {
         const keys = document.querySelectorAll('.key');
         keys.forEach(key => { 

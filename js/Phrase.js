@@ -7,6 +7,10 @@ class Phrase {
         this.phrase = phrase.toLowerCase();
     }
 
+
+    /**
+     * Add phrase letters to dispaly blanked out
+     */
     addPhraseToDisplay() {
         const phraseList = document.querySelector('#phrase>ul');
         [...this.phrase].forEach(letter => {
@@ -21,10 +25,21 @@ class Phrase {
         });
     }
 
+
+    /**
+     * Check if the chosen letter exists in the phrase
+     * @param {string} letter - The guessed letter 
+     * @returns {boolean}
+     */
     checkLetter(letter) {
          return this.phrase.includes(letter);
     }
 
+
+    /**
+     * Reveals the phrase letters containg the players guess
+     * @param {string} chosenLetter 
+     */
     showMatchedLetter(chosenLetter) {
         const phraseLetters = document.querySelectorAll('#phrase>ul>li');
         phraseLetters.forEach(letterLi => {
